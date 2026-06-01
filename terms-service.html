@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | NIPHO'S ADVISORY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#0B1120',
+                            800: '#111C2E',
+                            700: '#1E293B',
+                        },
+                        gold: {
+                            400: '#F3E5AB',
+                            500: '#D4AF37',
+                            600: '#AA8C2C',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0B1120; }
+        ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+
+        .glass {
+            background: rgba(17, 28, 46, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .text-gradient-gold {
+            background: linear-gradient(to right, #F3E5AB, #D4AF37, #AA8C2C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .legal-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: white;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .legal-content h3 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: #F3E5AB;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .legal-content p {
+            color: #9ca3af;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .legal-content ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #9ca3af;
+        }
+
+        .legal-content ul li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+
+        .toc-link.active {
+            color: #D4AF37;
+            border-left: 2px solid #D4AF37;
+            padding-left: 1rem;
+            background: linear-gradient(to right, rgba(212, 175, 55, 0.05), transparent);
+        }
+    </style>
+</head>
+<body class="bg-navy-900 text-gray-300 font-sans antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-serif font-bold text-white tracking-wide flex items-center gap-2">
+                <span class="text-gold-500 text-3xl">N</span> NIPHO'S
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-sm font-medium hover:text-gold-500 transition-colors">Home</a>
+                <a href="index.html" class="text-sm font-medium hover:text-gold-500 transition-colors">About</a>
+                <a href="services.html" class="text-sm font-medium hover:text-gold-500 transition-colors">Services</a>
+                <a href="index.html" class="text-sm font-medium hover:text-gold-500 transition-colors">Portfolio</a>
+                <a href="index.html" class="px-6 py-2 bg-gold-500 text-navy-900 font-semibold rounded-full hover:bg-gold-400 transition-all transform hover:scale-105 shadow-lg shadow-gold-500/20">
+                    Get in Touch
+                </a>
+            </div>
+            <button class="md:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-16 bg-navy-800/30 border-b border-white/5">
+        <div class="container mx-auto px-6 text-center">
+            <div class="inline-block mb-4 px-4 py-1 rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-400 text-xs font-semibold tracking-widest uppercase">
+                Legal
+            </div>
+            <h1 class="text-4xl md:text-6xl font-serif font-bold text-white mb-4">
+                Terms of <span class="text-gradient-gold italic">Service</span>
+            </h1>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Last updated: May 13, 2026
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-16">
+        <div class="flex flex-col lg:flex-row gap-12">
+            
+            <!-- Table of Contents (Sticky Sidebar) -->
+            <aside class="hidden lg:block lg:w-1/4">
+                <div class="sticky top-28 glass p-6 rounded-2xl border border-white/5">
+                    <h3 class="text-white font-serif font-bold text-lg mb-6">Contents</h3>
+                    <nav class="space-y-3 text-sm">
+                        <a href="#acceptance" class="toc-link block py-1 text-gray-400 hover:text-gold-500 transition-all border-l-2 border-transparent hover:border-gold-500/50 pl-4">Acceptance of Terms</a>
+                        <a href="#services" class="toc-link block py-1 text-gray-400 hover:text-gold-500 transition-all border-l-2 border-transparent hover:border-gold-500/50 pl-4">Our Services</a>
+                        <a href="#accounts" class="toc-link block py-1 text-gray-400 hover:text-gold-500 transition-all border-l-2 border-transparent hover:border-gold-500/50 pl-4">User Accounts</a>
+                        <a href="#payments" class="toc-link block py-1 text-gray-400 hover:text-gold-500 transition-all border-l-2 border-transparent hover:border-gold-500/50 pl-4">Payment Terms</a>
+                        <a href="#intellectual" class="toc-link block py-1 text-gray-400 hover:text-gold-500 transition-all border-l-2 border-transparent hover:border-gold-500/50 pl-4">Intellectual Property</a>
+                        <a href="#confidentiality" class="toc-link block py-1 text-gray-400 hover:text-gold-500 transition-all border-l-2 border-transparent hover:border-gold-500/50 pl-4">Confidentiality</a>
+                        <a href="#limitation" class="toc-link block py-1 text-gray-400 hover:text-gold-500 transition-all border-l-2 border-transparent hover:border-gold-500/50 pl-4">Limitation of Liability</a>
+                        <a href="#termination" class="toc-link block py-1 text-gray-400 hover:text-gold-500 transition-all border-l-2 border-transparent hover:border-gold-500/50 pl-4">Termination</a>
+                        <a href="#governing" class="toc-link block py-1 text-gray-400 hover:text-gold-500 transition-all border-l-2 border-transparent hover:border-gold-500/50 pl-4">Governing Law</a>
+                        <a href="#contact" class="toc-link block py-1 text-gray-400 hover:text-gold-500 transition-all border-l-2 border-transparent hover:border-gold-500/50 pl-4">Contact Us</a>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- Legal Text -->
+            <div class="lg:w-3/4 legal-content max-w-4xl">
+                
+                <section id="acceptance" class="scroll-mt-32">
+                    <h2>1. Acceptance of Terms</h2>
+                    <p>
+                        By accessing or using the services provided by NIPHO'S ADVISORY ("Company", "we", "us", or "our"), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of the terms, you may not access our services.
+                    </p>
+                    <p>
+                        These Terms apply to all visitors, users, and others who access or use our website and services. By accessing or using the Service, you agree to be bound by these Terms. If you are using the services on behalf of a company or other legal entity, you represent that you have the authority to bind such entity to these Terms.
+                    </p>
+                </section>
+
+                <section id="services" class="scroll-mt-32">
+                    <h2>2. Our Services</h2>
+                    <p>
+                        NIPHO'S ADVISORY provides corporate advisory, branding, corporate identity, graphic design, digital business solutions, and related services as described on our website. All services are subject to these Terms.
+                    </p>
+                    <h3>2.1 Service Descriptions</h3>
+                    <p>
+                        The specific scope, deliverables, timelines, and pricing for services will be outlined in a separate Service Agreement or Statement of Work (SOW) executed between you and NIPHO'S ADVISORY. In the event of any conflict between these Terms and a signed SOW, the SOW shall prevail.
+                    </p>
+                    <h3>2.2 Modifications to Services</h3>
+                    <p>
+                        We reserve the right to modify, suspend, or discontinue any part of our services at any time, with or without notice. We shall not be liable to you or any third party for any modification, suspension, or discontinuation of the services.
+                    </p>
+                    <h3>2.3 Third-Party Services</h3>
+                    <p>
+                        Our services may integrate with or rely on third-party platforms, tools, or services. We are not responsible for the availability, accuracy, or functionality of any third-party services.
+                    </p>
+                </section>
+
+                <section id="accounts" class="scroll-mt-32">
+                    <h2>3. User Accounts</h2>
+                    <p>
+                        When you create an account with us, you must provide information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service.
+                    </p>
+                    <p>
+                        You are responsible for safeguarding the password that you use to access the Service and for any activities or actions under your password. You agree not to disclose your password to any third party. You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account.
+                    </p>
+                </section>
+
+                <section id="payments" class="scroll-mt-32">
+                    <h2>4. Payment Terms</h2>
+                    <p>
+                        All fees for our services are as quoted on our website or as agreed upon in a signed Service Agreement. Prices are subject to change upon renewal or extension of services.
+                    </p>
+                    <h3>4.1 Billing and Invoicing</h3>
+                    <p>
+                        Payment terms will be specified in the Service Agreement. Unless otherwise stated, all invoices are due within 14 days of issuance. We accept payment via bank transfer, credit card, or other methods as specified in the invoice.
+                    </p>
+                    <h3>4.2 Late Payments</h3>
+                    <p>
+                        Late payments may be subject to interest charges at the rate of 1.5% per month or the maximum rate permitted by law, whichever is less. We reserve the right to suspend services for accounts with overdue balances exceeding 30 days.
+                    </p>
+                    <h3>4.3 Refunds</h3>
+                    <p>
+                        Refund policies, if any, will be specified in the individual Service Agreement. Generally, deposits and upfront payments for custom work (such as branding and design) are non-refundable once work has commenced.
+                    </p>
+                </section>
+
+                <section id="intellectual" class="scroll-mt-32">
+                    <h2>5. Intellectual Property</h2>
+                    <h3>5.1 Our Intellectual Property</h3>
+                    <p>
+                        The Service and its original content, features, and functionality are and will remain the exclusive property of NIPHO'S ADVISORY and its licensors. The Service is protected by copyright, trademark, and other laws. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of NIPHO'S ADVISORY.
+                    </p>
+                    <h3>5.2 Client Materials and Ownership</h3>
+                    <p>
+                        Upon full payment of all fees due, ownership of final deliverables specifically created for you under a Service Agreement shall transfer to you. However, we retain the right to display generic versions of the work in our portfolio and marketing materials unless otherwise agreed in writing.
+                    </p>
+                    <h3>5.3 Pre-Existing Materials</h3>
+                    <p>
+                        We retain all rights to pre-existing materials, methodologies, templates, and tools used in the creation of deliverables. You are granted a non-exclusive, perpetual license to use such incorporated materials as part of the final deliverables.
+                    </p>
+                </section>
+
+                <section id="confidentiality" class="scroll-mt-32">
+                    <h2>6. Confidentiality</h2>
+                    <p>
+                        Both parties agree to maintain the confidentiality of all proprietary and confidential information disclosed during the course of the engagement. This obligation survives the termination of these Terms for a period of three (3) years, or indefinitely for trade secrets.
+                    </p>
+                    <p>
+                        Confidential information does not include information that: (a) is or becomes publicly available through no breach of these Terms; (b) was rightfully in the receiving party's possession prior to disclosure; (c) is rightfully obtained from a third party without restriction; or (d) is independently developed without use of the disclosing party's confidential information.
+                    </p>
+                </section>
+
+                <section id="limitation" class="scroll-mt-32">
+                    <h2>7. Limitation of Liability</h2>
+                    <p>
+                        In no event shall NIPHO'S ADVISORY, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from:
+                    </p>
+                    <ul>
+                        <li>Your access to or use of or inability to access or use the Service;</li>
+                        <li>Any conduct or content of any third party on the Service;</li>
+                        <li>Any content obtained from the Service; and</li>
+                        <li>Unauthorized access, use, or alteration of your transmissions or content.</li>
+                    </ul>
+                    <p>
+                        Our total liability to you for all claims arising from or relating to these Terms or our services shall not exceed the total amount paid by you to us in the twelve (12) months preceding the event giving rise to liability.
+                    </p>
+                </section>
+
+                <section id="termination" class="scroll-mt-32">
+                    <h2>8. Termination</h2>
+                    <p>
+                        We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.
+                    </p>
+                    <p>
+                        Upon termination, your right to use the Service will immediately cease. If you wish to terminate your account, you may simply discontinue using the Service or notify us in writing.
+                    </p>
+                    <p>
+                        All provisions of the Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity, and limitations of liability.
+                    </p>
+                </section>
+
+                <section id="governing" class="scroll-mt-32">
+                    <h2>9. Governing Law</h2>
+                    <p>
+                        These Terms shall be governed and construed in accordance with the laws of the State of New York, United States, without regard to its conflict of law provisions.
+                    </p>
+                    <p>
+                        Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect.
+                    </p>
+                </section>
+
+                <section id="contact" class="scroll-mt-32">
+                    <h2>10. Contact Us</h2>
+                    <p>
+                        If you have any questions about these Terms of Service, please contact us:
+                    </p>
+                    <ul>
+                        <li>By email: legal@niphosadvisory.com</li>
+                        <li>By phone: +1 (555) 123-4567</li>
+                        <li>By mail: 123 Business Ave, Suite 400, New York, NY</li>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 border-t border-white/5 pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <a href="index.html" class="text-2xl font-serif font-bold text-white tracking-wide flex items-center gap-2 mb-4 md:mb-0">
+                    <span class="text-gold-500 text-3xl">N</span> NIPHO'S ADVISORY
+                </a>
+                <div class="flex gap-8 text-sm text-gray-500">
+                    <a href="index.html" class="hover:text-gold-500 transition-colors">Home</a>
+                    <a href="index.html" class="hover:text-gold-500 transition-colors">About</a>
+                    <a href="services.html" class="hover:text-gold-500 transition-colors">Services</a>
+                    <a href="terms-service.html" class="text-gold-500 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 text-center text-xs text-gray-600">
+                <p> NIPHO'S ADVISORY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass', 'shadow-lg', 'py-2');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('glass', 'shadow-lg', 'py-2');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Active TOC Link Highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const tocLinks = document.querySelectorAll('.toc-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

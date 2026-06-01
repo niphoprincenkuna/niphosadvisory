@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | NIPHO'S ADVISORY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#0B1120',
+                            800: '#111C2E',
+                            700: '#1E293B',
+                        },
+                        gold: {
+                            400: '#F3E5AB',
+                            500: '#D4AF37',
+                            600: '#AA8C2C',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0B1120; }
+        ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+
+        .glass {
+            background: rgba(17, 28, 46, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .glass-card {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(30, 41, 59, 0.6);
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .text-gradient-gold {
+            background: linear-gradient(to right, #F3E5AB, #D4AF37, #AA8C2C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-item {
+            position: relative;
+            padding-left: 1.5rem;
+            transition: color 0.3s;
+        }
+        .service-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #D4AF37;
+            opacity: 0.5;
+            transition: all 0.3s;
+        }
+        .service-item:hover::before {
+            transform: scale(1.5);
+            opacity: 1;
+            box-shadow: 0 0 10px #D4AF37;
+        }
+        .service-item:hover {
+            color: #fff;
+        }
+
+        .sticky-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+    </style>
+</head>
+<body class="bg-navy-900 text-gray-300 font-sans antialiased overflow-x-hidden">
+
+    <!-- Navigation (Consistent with Main Site) -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-serif font-bold text-white tracking-wide flex items-center gap-2">
+                <span class="text-gold-500 text-3xl">NA</span> NIPHO'S
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-sm font-medium hover:text-gold-500 transition-colors">Home</a>
+                <a href="index.html" class="text-sm font-medium hover:text-gold-500 transition-colors">About</a>
+                <a href="services.html" class="text-sm font-medium text-gold-500 transition-colors">Services</a>
+                <a href="index.html" class="text-sm font-medium hover:text-gold-500 transition-colors">Portfolio</a>
+                <a href="index.html" class="px-6 py-2 bg-gold-500 text-navy-900 font-semibold rounded-full hover:bg-gold-400 transition-all transform hover:scale-105 shadow-lg shadow-gold-500/20">
+                    Get in Touch
+                </a>
+            </div>
+            <button class="md:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[50vh] flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop')] bg-cover bg-center">
+        <div class="absolute inset-0 bg-navy-900/80"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center pt-20">
+            <div class="inline-block mb-4 px-4 py-1 rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-400 text-xs font-semibold tracking-widest uppercase reveal">
+                What We Offer
+            </div>
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 reveal" style="transition-delay: 100ms;">
+                Our <span class="text-gradient-gold italic">Services</span>
+            </h1>
+            <p class="text-lg text-gray-300 max-w-2xl mx-auto font-light reveal" style="transition-delay: 200ms;">
+                A comprehensive suite of corporate, creative, and digital solutions designed to build, brand, and grow your business.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 py-24">
+        <div class="flex flex-col lg:flex-row gap-12">
+            
+            <!-- Sidebar Navigation (Desktop) -->
+            <aside class="hidden lg:block lg:w-1/4">
+                <div class="sticky-sidebar glass p-6 rounded-2xl border border-white/5">
+                    <h3 class="text-white font-serif font-bold text-lg mb-6 border-b border-white/10 pb-4">Categories</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#advisory" class="flex items-center gap-3 text-gray-400 hover:text-gold-500 transition-colors group"><i class="fas fa-briefcase w-5 text-center group-hover:text-gold-500"></i> Corporate Advisory</a></li>
+                        <li><a href="#branding" class="flex items-center gap-3 text-gray-400 hover:text-gold-500 transition-colors group"><i class="fas fa-fingerprint w-5 text-center group-hover:text-gold-500"></i> Branding & Identity</a></li>
+                        <li><a href="#design" class="flex items-center gap-3 text-gray-400 hover:text-gold-500 transition-colors group"><i class="fas fa-pen-nib w-5 text-center group-hover:text-gold-500"></i> Graphic & Digital</a></li>
+                        <li><a href="#printing" class="flex items-center gap-3 text-gray-400 hover:text-gold-500 transition-colors group"><i class="fas fa-print w-5 text-center group-hover:text-gold-500"></i> Printing & Merch</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Services List -->
+            <div class="lg:w-3/4 space-y-24">
+                
+                <!-- Category 1: Corporate & Business Advisory -->
+                <section id="advisory" class="reveal scroll-mt-28">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-gold-500 to-gold-700 flex items-center justify-center text-navy-900 text-2xl shadow-lg shadow-gold-500/20">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-serif font-bold text-white">Corporate & Business Advisory</h2>
+                            <p class="text-gold-500 text-sm tracking-wider uppercase mt-1">Foundation & Strategy</p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-8 md:p-10 rounded-2xl">
+                        <p class="text-gray-400 mb-8 leading-relaxed border-l-4 border-gold-500 pl-4">
+                            We provide end-to-end business support to ensure your company is legally compliant, strategically sound, and positioned for sustainable growth.
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 gap-x-8 gap-y-4">
+                            <div class="service-item text-gray-400">Company Registration Assistance</div>
+                            <div class="service-item text-gray-400">Business Compliance Support</div>
+                            <div class="service-item text-gray-400">Corporate Governance Advisory</div>
+                            <div class="service-item text-gray-400">Business Strategy Consulting</div>
+                            <div class="service-item text-gray-400">Startup Advisory Services</div>
+                            <div class="service-item text-gray-400">Proposal & Business Plan Writing</div>
+                            <div class="service-item text-gray-400">Tender Documentation Assistance</div>
+                            <div class="service-item text-gray-400">Company Profile Creation</div>
+                            <div class="service-item text-gray-400">Policy & Procedure Development</div>
+                            <div class="service-item text-gray-400">Administrative Support Services</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Category 2: Branding & Corporate Identity -->
+                <section id="branding" class="reveal scroll-mt-28">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-gold-500 to-gold-700 flex items-center justify-center text-navy-900 text-2xl shadow-lg shadow-gold-500/20">
+                            <i class="fas fa-fingerprint"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-serif font-bold text-white">Branding & Corporate Identity</h2>
+                            <p class="text-gold-500 text-sm tracking-wider uppercase mt-1">Visual DNA & Perception</p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-8 md:p-10 rounded-2xl">
+                        <p class="text-gray-400 mb-8 leading-relaxed border-l-4 border-gold-500 pl-4">
+                            Your brand is more than a logo—it's the emotional connection you build with your audience. We craft identities that tell your story and command respect.
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 gap-x-8 gap-y-4">
+                            <div class="service-item text-gray-400">Logo Design</div>
+                            <div class="service-item text-gray-400">Brand Identity Development</div>
+                            <div class="service-item text-gray-400">Corporate Image Consulting</div>
+                            <div class="service-item text-gray-400">Brand Refresh & Rebranding</div>
+                            <div class="service-item text-gray-400">Brand Strategy</div>
+                            <div class="service-item text-gray-400">Visual Identity Packages</div>
+                            <div class="service-item text-gray-400">Brand Guidelines Creation</div>
+                            <div class="service-item text-gray-400">Slogan & Tagline Development</div>
+                            <div class="service-item text-gray-400">Corporate Stationery Design</div>
+                            <div class="service-item text-gray-400">Email Signature Design</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Category 3: Graphic & Digital Design -->
+                <section id="design" class="reveal scroll-mt-28">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-gold-500 to-gold-700 flex items-center justify-center text-navy-900 text-2xl shadow-lg shadow-gold-500/20">
+                            <i class="fas fa-pen-nib"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-serif font-bold text-white">Graphic & Digital Design</h2>
+                            <p class="text-gold-500 text-sm tracking-wider uppercase mt-1">Creative Execution</p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-8 md:p-10 rounded-2xl">
+                        <p class="text-gray-400 mb-8 leading-relaxed border-l-4 border-gold-500 pl-4">
+                            From pixel-perfect digital assets to print-ready masterpieces, our design team ensures every touchpoint reflects your premium standards.
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 gap-x-8 gap-y-4">
+                            <div class="service-item text-gray-400">Business Card Design</div>
+                            <div class="service-item text-gray-400">Letterhead Design</div>
+                            <div class="service-item text-gray-400">Invoice & Quotation Templates</div>
+                            <div class="service-item text-gray-400">Company Portfolio Design</div>
+                            <div class="service-item text-gray-400">Social Media Posters</div>
+                            <div class="service-item text-gray-400">Flyer & Brochure Design</div>
+                            <div class="service-item text-gray-400">Presentation Deck Design</div>
+                            <div class="service-item text-gray-400">Packaging Design</div>
+                            <div class="service-item text-gray-400">Banner & Signage Design</div>
+                            <div class="service-item text-gray-400">Website Design</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Category 4: Printing & Merchandise -->
+                <section id="printing" class="reveal scroll-mt-28">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-gold-500 to-gold-700 flex items-center justify-center text-navy-900 text-2xl shadow-lg shadow-gold-500/20">
+                            <i class="fas fa-print"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-serif font-bold text-white">Printing & Merchandise</h2>
+                            <p class="text-gold-500 text-sm tracking-wider uppercase mt-1">Tangible Presence</p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-8 md:p-10 rounded-2xl">
+                        <p class="text-gray-400 mb-8 leading-relaxed border-l-4 border-gold-500 pl-4">
+                            Extend your brand into the physical world. We coordinate high-quality printing and source premium merchandise that leaves a lasting impression.
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 gap-x-8 gap-y-4">
+                            <div class="service-item text-gray-400">Branded T-Shirts</div>
+                            <div class="service-item text-gray-400">Corporate Gifts</div>
+                            <div class="service-item text-gray-400">Promotional Merchandise</div>
+                            <div class="service-item text-gray-400">Printing Coordination</div>
+                            <div class="service-item text-gray-400">Custom Packaging</div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 border-t border-white/5 pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-serif font-bold text-white tracking-wide flex items-center gap-2">
+                        <span class="text-gold-500 text-3xl">N</span> NIPHO'S ADVISORY
+                    </a>
+                </div>
+                <div class="flex gap-8 text-sm text-gray-500">
+                    <a href="index.html" class="hover:text-gold-500 transition-colors">Home</a>
+                    <a href="index.html" class="hover:text-gold-500 transition-colors">About</a>
+                    <a href="services.html" class="hover:text-gold-500 transition-colors">Services</a>
+                    <a href="index.html" class="hover:text-gold-500 transition-colors">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-white/5 mt-8 pt-8 text-center text-xs text-gray-600">
+                <p> NIPHO'S ADVISORY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/15551234567" target="_blank" class="fixed bottom-8 right-8 z-40 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform animate-bounce">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <script>
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass', 'shadow-lg', 'py-2');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('glass', 'shadow-lg', 'py-2');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>
