@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nipho's Advisory | Services & Pricing</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f4ed;
+      color: #091224;
+      overflow-x: hidden;
+    }
+    h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; }
+
+    :root {
+      --navy: #091224;
+      --navy2: #121d33;
+      --cream: #f7f4ed;
+      --cream2: #fffaf0;
+      --gold: #c49a2c;
+      --gold2: #8f6d18;
+      --text: #263142;
+      --muted: #667085;
+      --white: #ffffff;
+    }
+
+    header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background: rgba(9, 18, 36, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(196, 154, 44, 0.35);
+    }
+
+    .navbar {
+      max-width: 1250px;
+      margin: auto;
+      padding: 15px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .logo-area img {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      object-fit: contain;
+      background: #ffffff;
+      padding: 4px;
+    }
+
+    .logo-area span {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 15px;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover, nav a.active { color: var(--gold); }
+
+    .hero {
+      min-height: 76vh;
+      padding: 140px 24px 80px;
+      background:
+        linear-gradient(120deg, rgba(9,18,36,.96), rgba(9,18,36,.88)),
+        radial-gradient(circle at right, rgba(196,154,44,.32), transparent 35%);
+      color: white;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      right: -120px;
+      bottom: -130px;
+      border-radius: 50%;
+      border: 80px solid rgba(196,154,44,.09);
+    }
+
+    .hero-inner {
+      max-width: 1250px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr .75fr;
+      gap: 45px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 900;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 74px);
+      line-height: 1.05;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span { color: var(--gold); }
+
+    .hero p {
+      color: #d7dce7;
+      font-size: 19px;
+      line-height: 1.8;
+      max-width: 780px;
+      margin-bottom: 28px;
+    }
+
+    .hero-note {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(196,154,44,.28);
+      border-radius: 18px;
+      padding: 18px 20px;
+      color: #e8ebf1;
+      max-width: 760px;
+    }
+
+    .hero-card {
+      background: var(--cream2);
+      color: var(--navy);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 30px 70px rgba(0,0,0,.35);
+      transform: rotate(2deg);
+    }
+
+    .hero-card img {
+      width: 86px;
+      height: 86px;
+      object-fit: contain;
+      background: white;
+      border-radius: 50%;
+      padding: 6px;
+      margin-bottom: 18px;
+    }
+
+    .hero-card h3 { font-size: 28px; margin-bottom: 10px; }
+    .hero-card p { color: #4e5868; font-size: 15px; margin: 0; }
+
+    section { padding: 80px 24px; }
+    .container { max-width: 1250px; margin: auto; }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
+    .section-title .small {
+      color: var(--gold2);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 900;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(34px, 4vw, 50px);
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 740px;
+      margin: auto;
+      line-height: 1.7;
+    }
+
+    .packages-section { background: var(--cream); }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+
+    .package-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 26px 20px;
+      border: 1px solid rgba(9,18,36,.08);
+      box-shadow: 0 18px 45px rgba(9,18,36,.08);
+      position: relative;
+      overflow: hidden;
+      transition: .3s ease;
+      min-height: 390px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .package-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 7px;
+      width: 100%;
+      background: var(--gold);
+    }
+
+    .package-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 65px rgba(9,18,36,.13);
+    }
+
+    .package-card.featured {
+      background: var(--navy);
+      color: white;
+      transform: translateY(-10px);
+      border: 2px solid var(--gold);
+    }
+
+    .package-card.featured:hover { transform: translateY(-16px); }
+
+    .package-label {
+      color: var(--gold2);
+      text-transform: uppercase;
+      font-weight: 900;
+      font-size: 11px;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .package-card.featured .package-label { color: var(--gold); }
+
+    .package-card h3 {
+      font-size: 25px;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .package-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .package-card.featured p { color: #cfd6e4; }
+
+    .price {
+      font-size: 34px;
+      color: var(--gold2);
+      font-weight: 900;
+      margin-bottom: 18px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .package-card.featured .price { color: var(--gold); }
+
+    .package-card ul {
+      list-style: none;
+      margin-top: auto;
+    }
+
+    .package-card li {
+      color: var(--text);
+      font-size: 14px;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(9,18,36,.08);
+    }
+
+    .package-card.featured li {
+      color: #f1f3f7;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .package-card li::before {
+      content: '✓';
+      color: var(--gold2);
+      font-weight: 900;
+      margin-right: 8px;
+    }
+
+    .featured-badge {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      background: var(--gold);
+      color: var(--navy);
+      border-radius: 30px;
+      padding: 7px 11px;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .services-section {
+      background: #ffffff;
+    }
+
+    .service-tabs {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      margin-bottom: 38px;
+    }
+
+    .tab-card {
+      background: var(--cream);
+      border-radius: 18px;
+      padding: 18px;
+      border: 1px solid rgba(9,18,36,.08);
+      text-align: center;
+    }
+
+    .tab-card strong {
+      color: var(--gold2);
+      font-size: 22px;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .tab-card span {
+      color: var(--text);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .category {
+      margin-bottom: 55px;
+      background: var(--cream2);
+      border: 1px solid rgba(9,18,36,.08);
+      border-radius: 28px;
+      padding: 28px;
+    }
+
+    .category-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-end;
+      margin-bottom: 22px;
+      border-bottom: 1px solid rgba(9,18,36,.12);
+      padding-bottom: 18px;
+    }
+
+    .category-heading h2 {
+      font-size: 32px;
+      color: var(--navy);
+    }
+
+    .category-heading span {
+      color: var(--gold2);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .price-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .price-item {
+      background: white;
+      border-radius: 16px;
+      padding: 16px 18px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 15px;
+      align-items: center;
+      border: 1px solid rgba(9,18,36,.08);
+      transition: .25s ease;
+    }
+
+    .price-item:hover {
+      border-color: rgba(196,154,44,.6);
+      transform: translateX(4px);
+    }
+
+    .price-item h3 {
+      font-size: 18px;
+      margin-bottom: 4px;
+      color: var(--navy);
+    }
+
+    .price-item small {
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .amount {
+      background: #091224;
+      color: var(--gold);
+      border-radius: 14px;
+      padding: 10px 14px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .process-section {
+      background: var(--navy);
+      color: white;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .process-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(196,154,44,.22);
+      border-radius: 22px;
+      padding: 24px;
+    }
+
+    .process-card strong {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      background: var(--gold);
+      color: var(--navy);
+      border-radius: 50%;
+      margin-bottom: 18px;
+      font-size: 18px;
+    }
+
+    .process-card h3 { font-size: 23px; margin-bottom: 9px; }
+    .process-card p { color: #cfd6e4; line-height: 1.7; font-size: 15px; }
+
+    .cta-section {
+      background: linear-gradient(135deg, var(--gold), #8d6c16);
+      color: var(--navy);
+      text-align: center;
+    }
+
+    .cta-section h2 { font-size: 46px; margin-bottom: 14px; }
+    .cta-section p { max-width: 760px; margin: 0 auto 28px; font-size: 18px; line-height: 1.8; }
+    .btn {
+      display: inline-block;
+      padding: 14px 30px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 900;
+      background: var(--navy);
+      color: #ffffff;
+      transition: .3s ease;
+    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 14px 35px rgba(0,0,0,.2); }
+
+    footer {
+      padding: 26px 24px;
+      text-align: center;
+      color: #aeb6c5;
+      background: #050915;
+      border-top: 1px solid rgba(196,154,44,.18);
+    }
+
+    @media (max-width: 1100px) {
+      .packages-grid { grid-template-columns: repeat(2, 1fr); }
+      .service-tabs { grid-template-columns: repeat(2, 1fr); }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { transform: none; }
+    }
+
+    @media (max-width: 760px) {
+      .navbar { flex-direction: column; gap: 14px; }
+      nav ul { gap: 16px; flex-wrap: wrap; justify-content: center; }
+      .packages-grid, .price-list, .process-grid, .service-tabs { grid-template-columns: 1fr; }
+      .package-card.featured { transform: none; }
+      .category { padding: 20px; }
+      .category-heading { flex-direction: column; align-items: flex-start; }
+      .price-item { grid-template-columns: 1fr; }
+      .amount { width: fit-content; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="navbar">
+      <a href="index.html" class="logo-area">
+        <img src="assets/logo.png" alt="Nipho's Advisory Logo">
+        <span>Nipho's Advisory</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html" class="active">Services & Pricing</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Affordable service catalogue</div>
+          <h1>Smart business support for <span>township entrepreneurs.</span></h1>
+          <p>
+            We provide branding, company documents, websites, design, printing, and business advisory services at prices that make sense for small businesses, churches, salons, local shops, guest houses, contractors, and startups.
+          </p>
+          <div class="hero-note">
+            All prices are starting prices. Final quotes depend on design complexity, turnaround time, number of pages, printing quantities, and project requirements.
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <img src="assets/logo.png" alt="Nipho's Advisory Logo">
+          <h3>Professional does not have to be expensive.</h3>
+          <p>Choose a package, build your brand, and present your business with confidence.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="packages-section">
+      <div class="container">
+        <div class="section-title">
+          <div class="small">Choose your level</div>
+          <h2>Business Packages</h2>
+          <p>Five affordable packages designed for different stages of business growth.</p>
+        </div>
+
+        <div class="packages-grid">
+          <div class="package-card">
+            <div class="package-label">Basic identity</div>
+            <h3>Starter Package</h3>
+            <p>For someone starting with only the basics.</p>
+            <div class="price">R750</div>
+            <ul>
+              <li>Simple Logo Design</li>
+              <li>Business Card Design</li>
+              <li>Email Signature</li>
+              <li>1 Social Media Poster</li>
+            </ul>
+          </div>
+
+          <div class="package-card">
+            <div class="package-label">Registration</div>
+            <h3>Business Registration Package</h3>
+            <p>For new business owners who need help registering their company.</p>
+            <div class="price">R1 200</div>
+            <ul>
+              <li>CIPC Company Registration Assistance</li>
+              <li>Name Reservation Assistance</li>
+              <li>Share Certificate Template</li>
+              <li>Company Documents Folder Setup</li>
+            </ul>
+          </div>
+
+          <div class="package-card">
+            <div class="package-label">Startup setup</div>
+            <h3>Startup Package</h3>
+            <p>For a new business that needs registration and basic branding.</p>
+            <div class="price">R1 800</div>
+            <ul>
+              <li>CIPC Company Registration Assistance</li>
+              <li>Logo Design</li>
+              <li>Business Card Design</li>
+              <li>Letterhead Design</li>
+              <li>Email Signature</li>
+            </ul>
+          </div>
+
+          <div class="package-card featured">
+            <div class="featured-badge">Popular</div>
+            <div class="package-label">Best value</div>
+            <h3>Business Growth Package</h3>
+            <p>For businesses that want registration, branding, and business presentation.</p>
+            <div class="price">R2 500</div>
+            <ul>
+              <li>CIPC Company Registration Assistance</li>
+              <li>Premium Logo Design</li>
+              <li>Company Profile</li>
+              <li>Letterhead Design</li>
+              <li>Business Card Design</li>
+              <li>5 Social Media Posts</li>
+            </ul>
+          </div>
+
+          <div class="package-card">
+            <div class="package-label">Online presence</div>
+            <h3>Premium Business Package</h3>
+            <p>For businesses that need registration, branding, and online presence.</p>
+            <div class="price">R2 500</div>
+            <ul>
+              <li>CIPC Company Registration Assistance</li>
+              <li>Logo Design</li>
+              <li>Company Profile</li>
+              <li>3 Page Business Website</li>
+              <li>Email Signature</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services-section">
+      <div class="container">
+        <div class="section-title">
+          <div class="small">Price list</div>
+          <h2>Individual Services</h2>
+          <p>Select once-off services when you do not need a full package.</p>
+        </div>
+
+        <div class="service-tabs">
+          <div class="tab-card"><strong>01</strong><span>Business Advisory</span></div>
+          <div class="tab-card"><strong>02</strong><span>Brand Identity</span></div>
+          <div class="tab-card"><strong>03</strong><span>Graphic Design</span></div>
+          <div class="tab-card"><strong>04</strong><span>Web Design</span></div>
+          <div class="tab-card"><strong>05</strong><span>Printing</span></div>
+        </div>
+
+        <div class="category">
+          <div class="category-heading"><div><h2>Corporate & Business Advisory</h2><span>Business support</span></div></div>
+          <div class="price-list">
+            <div class="price-item"><div><h3>Company Registration Assistance</h3><small>Support with new company registration process.</small></div><div class="amount">R800</div></div>
+            <div class="price-item"><div><h3>Startup Advisory Session</h3><small>Guidance for new entrepreneurs and small businesses.</small></div><div class="amount">R350</div></div>
+            <div class="price-item"><div><h3>Business Compliance Support</h3><small>Basic support with business compliance documents.</small></div><div class="amount">R1 200</div></div>
+            <div class="price-item"><div><h3>Company Profile Creation</h3><small>Professional profile for tenders, clients, and marketing.</small></div><div class="amount">R1 500</div></div>
+            <div class="price-item"><div><h3>Proposal Writing</h3><small>Business, sponsorship, funding, or service proposals.</small></div><div class="amount">R800</div></div>
+            <div class="price-item"><div><h3>Business Plan Writing</h3><small>Structured business plan for planning or funding use.</small></div><div class="amount">R2 500</div></div>
+            <div class="price-item"><div><h3>Tender Documentation Assistance</h3><small>Support with arranging and preparing tender documents.</small></div><div class="amount">R1 500</div></div>
+            <div class="price-item"><div><h3>Policy & Procedure Development</h3><small>Basic internal policies and procedure documents.</small></div><div class="amount">R2 000</div></div>
+          </div>
+        </div>
+
+        <div class="category">
+          <div class="category-heading"><div><h2>Branding & Corporate Identity</h2><span>Brand image</span></div></div>
+          <div class="price-list">
+            <div class="price-item"><div><h3>Logo Design</h3><small>Simple professional logo design.</small></div><div class="amount">R500</div></div>
+            <div class="price-item"><div><h3>Premium Logo Design</h3><small>More detailed logo with improved concept development.</small></div><div class="amount">R1 000</div></div>
+            <div class="price-item"><div><h3>Brand Identity Package</h3><small>Logo, colors, fonts, and basic brand direction.</small></div><div class="amount">R2 500</div></div>
+            <div class="price-item"><div><h3>Corporate Image Consulting</h3><small>Advice on improving how your business presents itself.</small></div><div class="amount">R500</div></div>
+            <div class="price-item"><div><h3>Brand Strategy Session</h3><small>Positioning, target audience, brand feel, and direction.</small></div><div class="amount">R750</div></div>
+            <div class="price-item"><div><h3>Brand Refresh & Rebranding</h3><small>Improve or modernize an existing business image.</small></div><div class="amount">R1 500</div></div>
+            <div class="price-item"><div><h3>Brand Guidelines</h3><small>Simple brand rules for colors, fonts, and logo use.</small></div><div class="amount">R1 200</div></div>
+            <div class="price-item"><div><h3>Email Signature Design</h3><small>Professional email signature for business communication.</small></div><div class="amount">R150</div></div>
+          </div>
+        </div>
+
+        <div class="category">
+          <div class="category-heading"><div><h2>Graphic & Digital Design</h2><span>Creative design</span></div></div>
+          <div class="price-list">
+            <div class="price-item"><div><h3>Business Card Design</h3><small>Professional business card layout.</small></div><div class="amount">R250</div></div>
+            <div class="price-item"><div><h3>Letterhead Design</h3><small>Business letterhead for official documents.</small></div><div class="amount">R250</div></div>
+            <div class="price-item"><div><h3>Invoice & Quotation Template</h3><small>Editable templates for business quotations and invoices.</small></div><div class="amount">R350</div></div>
+            <div class="price-item"><div><h3>Flyer Design</h3><small>Promotional flyer for events, sales, or services.</small></div><div class="amount">R300</div></div>
+            <div class="price-item"><div><h3>Social Media Poster</h3><small>Single poster for Facebook, WhatsApp, or Instagram.</small></div><div class="amount">R150</div></div>
+            <div class="price-item"><div><h3>Social Media Package</h3><small>10 branded social media posts.</small></div><div class="amount">R1 000</div></div>
+            <div class="price-item"><div><h3>Banner Design</h3><small>Design for digital or printed banners.</small></div><div class="amount">R400</div></div>
+            <div class="price-item"><div><h3>Company Portfolio Design</h3><small>Portfolio document for showcasing work and services.</small></div><div class="amount">R1 500</div></div>
+          </div>
+        </div>
+
+        <div class="category">
+          <div class="category-heading"><div><h2>Website Design</h2><span>Online presence</span></div></div>
+          <div class="price-list">
+            <div class="price-item"><div><h3>Starter Website</h3><small>1 to 3 pages, mobile responsive, basic contact section.</small></div><div class="amount">R1 500</div></div>
+            <div class="price-item"><div><h3>Business Website</h3><small>4 to 6 pages, stronger layout, contact form, and service sections.</small></div><div class="amount">R2 500</div></div>
+            <div class="price-item"><div><h3>Website Maintenance</h3><small>Monthly updates, small changes, and content support.</small></div><div class="amount">R300/mo</div></div>
+            <div class="price-item"><div><h3>Domain & Hosting Setup</h3><small>Assistance with setting up domain and hosting accounts.</small></div><div class="amount">R500</div></div>
+          </div>
+        </div>
+
+        <div class="category">
+          <div class="category-heading"><div><h2>Printing & Merchandise</h2><span>Brand visibility</span></div></div>
+          <div class="price-list">
+            <div class="price-item"><div><h3>Branded T-Shirts</h3><small>Custom branded T-shirts. Price may depend on quantity.</small></div><div class="amount">R150 ea</div></div>
+            <div class="price-item"><div><h3>Golf Shirts</h3><small>Branded golf shirts for staff or events.</small></div><div class="amount">R250 ea</div></div>
+            <div class="price-item"><div><h3>Hoodies</h3><small>Custom branded hoodies.</small></div><div class="amount">R350 ea</div></div>
+            <div class="price-item"><div><h3>Business Cards Printing</h3><small>Printed business cards. Quantity affects final price.</small></div><div class="amount">From R250</div></div>
+            <div class="price-item"><div><h3>Flyers Printing</h3><small>Flyer printing for promotions and events.</small></div><div class="amount">From R300</div></div>
+            <div class="price-item"><div><h3>Custom Packaging</h3><small>Packaging support for products and small businesses.</small></div><div class="amount">From R800</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process-section">
+      <div class="container">
+        <div class="section-title">
+          <div class="small">How it works</div>
+          <h2>Simple Process</h2>
+          <p>We keep the process clear so clients know exactly what to expect.</p>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-card"><strong>1</strong><h3>Choose</h3><p>Select a package or individual service that matches your business needs.</p></div>
+          <div class="process-card"><strong>2</strong><h3>Brief</h3><p>Send your business details, logo, colours, content, and project requirements.</p></div>
+          <div class="process-card"><strong>3</strong><h3>Design</h3><p>We prepare the work and share drafts for your review and feedback.</p></div>
+          <div class="process-card"><strong>4</strong><h3>Deliver</h3><p>You receive final files, documents, or website pages ready for business use.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2>Need a custom package?</h2>
+        <p>Tell us your budget and what your business needs. We can combine services into a package that works for you.</p>
+        <a href="contact.html" class="btn">Request a Quote</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Nipho's Advisory. Affordable professional services for growing township businesses.</p>
+  </footer>
+
+</body>
+</html>
