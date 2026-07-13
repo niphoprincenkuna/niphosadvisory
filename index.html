@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <title>Niphos Advisory | Accounting, Tax & Business Solutions</title>
+<meta property="og:title" content="Niphos Advisory">
+<meta property="og:description" content="Professional Accounting, Tax, CIPC, Payroll and Business Advisory Services.">
+<meta property="og:image" content="/logo.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.niphosadvisory.co.za">
+  <link rel="icon" type="image/png" href="/logo.png">
+  <div id="preloader">
+    <img src="assets/logo.png" alt="Niphos Advisory">
+</div>
+<div id="root"></div>
+<meta name="theme-color" content="#0d1b2a">
+<meta name="description" content="Niphos Advisory - Accounting, Tax, Company Registration and Business Advisory Services">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nipho's Advisory | Home</title>
@@ -325,6 +338,35 @@
       .floating-card { position: static; width: 100%; margin-top: 14px; }
       .visual-wrap { display: grid; gap: 12px; }
     }
+    #preloader{
+    position:fixed;
+    inset:0;
+    background:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+}
+
+#preloader img{
+    width:130px;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    0%{
+        transform:scale(.95);
+        opacity:.8;
+    }
+    50%{
+        transform:scale(1.08);
+        opacity:1;
+    }
+    100%{
+        transform:scale(.95);
+        opacity:.8;
+    }
+}
   </style>
 </head>
 <body>
