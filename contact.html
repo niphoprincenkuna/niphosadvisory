@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nipho's Advisory | Contact</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f4ed;
+      color: #091224;
+      overflow-x: hidden;
+    }
+    h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; }
+
+    :root {
+      --navy: #091224;
+      --navy2: #121d33;
+      --cream: #f7f4ed;
+      --cream2: #fffaf0;
+      --gold: #c49a2c;
+      --gold2: #8f6d18;
+      --text: #263142;
+      --muted: #667085;
+      --white: #ffffff;
+      --whatsapp: #25d366;
+    }
+
+    header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background: rgba(9, 18, 36, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(196, 154, 44, 0.35);
+    }
+
+    .navbar {
+      max-width: 1250px;
+      margin: auto;
+      padding: 15px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .logo-area img {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      object-fit: contain;
+      background: #ffffff;
+      padding: 4px;
+    }
+
+    .logo-area span {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 15px;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover, nav a.active { color: var(--gold); }
+
+    .hero {
+      min-height: 68vh;
+      padding: 140px 24px 80px;
+      background:
+        linear-gradient(120deg, rgba(9,18,36,.96), rgba(9,18,36,.88)),
+        radial-gradient(circle at right, rgba(196,154,44,.32), transparent 35%);
+      color: white;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      right: -140px;
+      bottom: -160px;
+      border-radius: 50%;
+      border: 85px solid rgba(196,154,44,.08);
+    }
+
+    .hero-inner {
+      max-width: 920px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 900;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span { color: var(--gold); }
+
+    .hero p {
+      color: #d7dce7;
+      font-size: 19px;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    section { padding: 80px 24px; }
+    .container { max-width: 1250px; margin: auto; }
+
+    .contact-section {
+      background: #ffffff;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    .contact-info {
+      background: var(--navy);
+      color: white;
+      border-radius: 30px;
+      padding: 38px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-info::after {
+      content: '';
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      border: 45px solid rgba(196,154,44,.08);
+      right: -90px;
+      bottom: -95px;
+    }
+
+    .contact-info img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      background: white;
+      border-radius: 50%;
+      padding: 6px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-info h2 {
+      font-size: 38px;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-info p {
+      color: #cfd6e4;
+      line-height: 1.8;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .info-card {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(196,154,44,.2);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .info-card strong {
+      display: block;
+      color: var(--gold);
+      margin-bottom: 6px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .info-card a,
+    .info-card span {
+      color: white;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .contact-form-box {
+      background: var(--cream2);
+      border-radius: 30px;
+      padding: 38px;
+      border: 1px solid rgba(9,18,36,.08);
+      box-shadow: 0 18px 45px rgba(9,18,36,.08);
+    }
+
+    .contact-form-box h2 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .contact-form-box p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 15px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(9,18,36,.15);
+      background: #ffffff;
+      color: var(--navy);
+      font-size: 15px;
+      outline: none;
+      transition: .3s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(196,154,44,.12);
+    }
+
+    textarea {
+      min-height: 145px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      border: none;
+      cursor: pointer;
+      background: var(--navy);
+      color: #ffffff;
+      padding: 15px 30px;
+      border-radius: 40px;
+      font-weight: 900;
+      font-size: 16px;
+      transition: .3s ease;
+    }
+
+    .submit-btn:hover {
+      background: var(--gold2);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 35px rgba(9,18,36,.18);
+    }
+
+    .quick-section {
+      background: var(--cream);
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .quick-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 28px;
+      border: 1px solid rgba(9,18,36,.08);
+      box-shadow: 0 18px 45px rgba(9,18,36,.06);
+      text-align: center;
+    }
+
+    .quick-card strong {
+      width: 55px;
+      height: 55px;
+      margin: 0 auto 18px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--gold), #8d6c16);
+      display: grid;
+      place-items: center;
+      color: var(--navy);
+      font-size: 23px;
+    }
+
+    .quick-card h3 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .quick-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .quick-card a {
+      color: var(--gold2);
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--whatsapp);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 32px;
+      font-weight: 900;
+      z-index: 2000;
+      box-shadow: 0 16px 35px rgba(37,211,102,.35);
+      transition: .3s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.08) translateY(-4px);
+      box-shadow: 0 20px 45px rgba(37,211,102,.45);
+    }
+
+    .whatsapp-float::before {
+      content: '';
+      position: absolute;
+      inset: -7px;
+      border-radius: 50%;
+      border: 2px solid rgba(37,211,102,.35);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(.9); opacity: 1; }
+      100% { transform: scale(1.35); opacity: 0; }
+    }
+
+    footer {
+      padding: 26px 24px;
+      text-align: center;
+      color: #aeb6c5;
+      background: #050915;
+      border-top: 1px solid rgba(196,154,44,.18);
+    }
+
+    @media (max-width: 900px) {
+      .navbar { flex-direction: column; gap: 14px; }
+      nav ul { gap: 16px; flex-wrap: wrap; justify-content: center; }
+      .contact-grid, .quick-grid, .form-row { grid-template-columns: 1fr; }
+      .contact-info, .contact-form-box { padding: 28px; }
+      .whatsapp-float { width: 58px; height: 58px; font-size: 29px; right: 18px; bottom: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="navbar">
+      <a href="index.html" class="logo-area">
+        <img src="assets/logo.png" alt="Nipho's Advisory Logo">
+        <span>Nipho's Advisory</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services & Pricing</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow">Get in touch</div>
+        <h1>Let us help you build a <span>professional business image.</span></h1>
+        <p>
+          Ready to register your business, design your brand, create a company profile, build a website, or prepare professional documents? Send us a message and we will guide you to the right service.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <img src="assets/logo.png" alt="Nipho's Advisory Logo">
+          <h2>Contact Details</h2>
+          <p>
+            Reach out to Nipho's Advisory for business registration assistance, branding, graphic design, websites, company profiles, printing, and professional documentation.
+          </p>
+
+          <div class="info-list">
+            <div class="info-card">
+              <strong>Phone / WhatsApp</strong>
+              <a href="tel:0664687222">066 468 7222</a>
+            </div>
+            <div class="info-card">
+              <strong>Email Address</strong>
+              <a href="mailto:niphosadvisory.company@gmail.com">niphosadvisory.company@gmail.com</a>
+            </div>
+            <div class="info-card">
+              <strong>Location</strong>
+              <span>Kabokweni, Mbombela, Mpumalanga</span>
+            </div>
+            <div class="info-card">
+              <strong>Business Hours</strong>
+              <span>Monday - Friday: 08:00 - 17:00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-box">
+          <h2>Send a Message</h2>
+          <p>Fill in your details below. You can also use the WhatsApp button for a faster response.</p>
+
+          <form id="contact-form">
+            <div class="form-row">
+              <input type="text" name="name" id="name" placeholder="Your Name" required>
+              <input type="tel" name="phone" id="phone" placeholder="Your Phone Number" required>
+            </div>
+
+            <input type="email" name="email" id="email" placeholder="Your Email Address" required>
+
+            <select name="service" id="service" required>
+              <option value="">Select Service Needed</option>
+              <option>CIPC Company Registration Assistance</option>
+              <option>Logo / Branding</option>
+              <option>Company Profile</option>
+              <option>Website Design</option>
+              <option>Business Proposal / Business Plan</option>
+              <option>Graphic Design</option>
+              <option>Printing & Merchandise</option>
+              <option>Other Service</option>
+            </select>
+
+            <textarea name="message" id="message" placeholder="Tell us what you need..." required></textarea>
+
+            <button type="submit" class="submit-btn">Send Message via WhatsApp</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-section">
+      <div class="container">
+        <div class="quick-grid">
+          <div class="quick-card">
+            <strong>☎</strong>
+            <h3>Call Us</h3>
+            <p>Speak to us directly about your business or project needs.</p>
+            <a href="tel:0664687222">066 468 7222</a>
+          </div>
+
+          <div class="quick-card">
+            <strong>@</strong>
+            <h3>Email Us</h3>
+            <p>Send detailed information, documents, and project briefs.</p>
+            <a href="mailto:niphosadvisory.company@gmail.com">Send Email</a>
+          </div>
+
+          <div class="quick-card">
+            <strong>✓</strong>
+            <h3>WhatsApp</h3>
+            <p>Get a faster response for quotes, questions, and service enquiries.</p>
+            <a href="https://wa.me/27664687222?text=Hello%20Nipho's%20Advisory%2C%20I%20would%20like%20to%20ask%20about%20your%20services." target="_blank">Chat on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a class="whatsapp-float" href="https://wa.me/27664687222?text=Hello%20Nipho's%20Advisory%2C%20I%20would%20like%20to%20ask%20about%20your%20services." target="_blank" aria-label="Chat on WhatsApp">☏</a>
+
+  <footer>
+    <p>© 2026 Nipho's Advisory (Pty) Ltd. Corporate Matters. Brand Image. Lasting Impact.</p>
+  </footer>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var name = document.getElementById('name').value.trim();
+      var phone = document.getElementById('phone').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var service = document.getElementById('service').value.trim();
+      var message = document.getElementById('message').value.trim();
+
+      var text =
+        "Hello Nipho's Advisory, I would like to enquire about your services." +
+        "\n\n*Name:* " + name +
+        "\n*Phone:* " + phone +
+        "\n*Email:* " + email +
+        "\n*Service Needed:* " + service +
+        "\n*Message:* " + message;
+
+      var whatsappUrl = "https://wa.me/27664687222?text=" + encodeURIComponent(text);
+      window.open(whatsappUrl, '_blank');
+    });
+  </script>
+
+</body>
+</html>
