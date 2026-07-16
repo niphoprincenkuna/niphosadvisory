@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nipho's Advisory | Build Your Quote</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f7f4ed;
+  color: #091224;
+  overflow-x: hidden;
+}
+h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; }
+:root {
+  --navy: #091224;
+  --navy2: #121d33;
+  --cream: #f7f4ed;
+  --cream2: #fffaf0;
+  --gold: #c49a2c;
+  --gold2: #8f6d18;
+  --text: #263142;
+  --muted: #667085;
+  --white: #ffffff;
+  --green: #2e7d32;
+  --red: #b3261e;
+}
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: rgba(9, 18, 36, 0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(196, 154, 44, 0.35);
+}
+.navbar {
+  max-width: 1250px;
+  margin: auto;
+  padding: 15px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--white);
+}
+.logo-area img {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: #ffffff;
+  padding: 4px;
+}
+.logo-area span {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+nav a {
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+nav a:hover, nav a.active { color: var(--gold); }
+
+.hero {
+  padding: 150px 24px 60px;
+  background:
+    linear-gradient(120deg, rgba(9,18,36,.96), rgba(9,18,36,.88)),
+    radial-gradient(circle at right, rgba(196,154,44,.32), transparent 35%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.hero-inner { max-width: 1250px; margin: auto; position: relative; z-index: 2; }
+.eyebrow {
+  display: inline-block;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 900;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+.hero h1 { font-size: clamp(34px, 5vw, 58px); line-height: 1.1; margin-bottom: 18px; max-width: 900px; }
+.hero h1 span { color: var(--gold); }
+.hero p { color: #d7dce7; font-size: 17px; line-height: 1.8; max-width: 780px; }
+
+.builder-section { padding: 60px 24px 100px; }
+.builder-wrap {
+  max-width: 1250px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+.card {
+  background: var(--white);
+  border-radius: 24px;
+  border: 1px solid rgba(9,18,36,.08);
+  box-shadow: 0 18px 45px rgba(9,18,36,.06);
+  padding: 26px;
+}
+.catalog-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.catalog-tab {
+  border: 1px solid rgba(9,18,36,.12);
+  background: var(--cream);
+  color: var(--text);
+  padding: 9px 16px;
+  border-radius: 30px;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  transition: .2s ease;
+}
+.catalog-tab.active { background: var(--navy); color: var(--gold); border-color: var(--navy); }
+
+.catalog-category { display: none; }
+.catalog-category.active { display: block; }
+.catalog-category h3 {
+  font-size: 20px;
+  color: var(--navy);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(9,18,36,.1);
+}
+.catalog-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 14px;
+  align-items: center;
+  padding: 13px 6px;
+  border-bottom: 1px solid rgba(9,18,36,.06);
+}
+.catalog-item h4 { font-size: 15.5px; color: var(--navy); margin-bottom: 3px; }
+.catalog-item small { color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+.catalog-amount { font-weight: 900; color: var(--gold2); white-space: nowrap; font-size: 14px; }
+.add-btn {
+  background: var(--navy);
+  color: var(--gold);
+  border: none;
+  padding: 9px 16px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: .2s ease;
+}
+.add-btn:hover { background: var(--gold); color: var(--navy); }
+.add-btn.added { background: var(--green); color: white; }
+
+.custom-item-form {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px dashed rgba(9,18,36,.15);
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: 10px;
+}
+.custom-item-form input {
+  padding: 11px 12px;
+  border: 1px solid rgba(9,18,36,.15);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  width: 100%;
+}
+.custom-item-form label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  font-weight: 800;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.summary-card { position: sticky; top: 100px; }
+.summary-card h3 { font-size: 22px; color: var(--navy); margin-bottom: 4px; }
+.summary-card .sub { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
+
+#lineItems { list-style: none; margin-bottom: 16px; max-height: 320px; overflow-y: auto; }
+#lineItems li {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(9,18,36,.07);
+  font-size: 14px;
+}
+#lineItems .name { color: var(--navy); font-weight: 700; }
+#lineItems .qty-controls { display: flex; align-items: center; gap: 6px; }
+#lineItems .qty-controls button {
+  width: 22px; height: 22px; border-radius: 6px; border: 1px solid rgba(9,18,36,.15);
+  background: var(--cream); cursor: pointer; font-weight: 900; font-size: 13px; line-height: 1;
+}
+#lineItems .amt { color: var(--gold2); font-weight: 900; white-space: nowrap; }
+#lineItems .remove { color: var(--red); cursor: pointer; font-weight: 900; font-size: 16px; padding: 0 4px; background:none; border:none; }
+.empty-note { color: var(--muted); font-size: 14px; padding: 18px 0; text-align: center; }
+
+.totals { border-top: 2px solid var(--navy); padding-top: 14px; margin-bottom: 22px; }
+.totals-row { display: flex; justify-content: space-between; font-size: 14px; padding: 5px 0; color: var(--text); }
+.totals-row.grand { font-size: 22px; font-weight: 900; color: var(--navy); padding-top: 8px; }
+.totals-row.grand .val { color: var(--gold2); }
+
+.field { margin-bottom: 14px; }
+.field label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-weight: 800; margin-bottom: 5px; display: block; }
+.field input, .field textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid rgba(9,18,36,.15);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+}
+.field textarea { resize: vertical; min-height: 60px; }
+
+.download-btn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--gold), #8d6c16);
+  color: var(--navy);
+  font-weight: 900;
+  font-size: 16px;
+  cursor: pointer;
+  transition: .25s ease;
+  margin-top: 6px;
+}
+.download-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(196,154,44,.35); }
+.download-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
+.note-small { color: var(--muted); font-size: 12px; margin-top: 10px; text-align: center; line-height: 1.6; }
+
+footer {
+  padding: 26px 24px;
+  text-align: center;
+  color: #aeb6c5;
+  background: #050915;
+  border-top: 1px solid rgba(196,154,44,.18);
+}
+
+@media (max-width: 980px) {
+  .builder-wrap { grid-template-columns: 1fr; }
+  .summary-card { position: static; }
+  .custom-item-form { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .catalog-item { grid-template-columns: 1fr; }
+  .navbar { flex-direction: column; gap: 14px; }
+  nav ul { gap: 16px; justify-content: center; }
+  .custom-item-form { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <a href="index.html" class="logo-area">
+      <img src="assets/logo.png" alt="Nipho's Advisory Logo">
+      <span>Nipho's Advisory</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services & Pricing</a></li>
+        <li><a href="quote.html" class="active">Get a Quote</a></li>
+        <li><a href="it-support.html">IT Support</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Build your own quote</div>
+      <h1>Pick your services. <span>Get an instant PDF quote.</span></h1>
+      <p>Add packages or individual services, adjust quantities, and download a professional PDF quotation right away — no waiting, no back-and-forth.</p>
+    </div>
+  </section>
+
+  <section class="builder-section">
+    <div class="builder-wrap">
+
+      <div class="card">
+        <div class="catalog-tabs" id="catalogTabs"></div>
+        <div id="catalogBody"></div>
+
+        <div class="custom-item-form">
+          <div>
+            <label>Custom item description</label>
+            <input type="text" id="customDesc" placeholder="e.g. Extra revisions" />
+          </div>
+          <div>
+            <label>Amount (R)</label>
+            <input type="number" id="customAmount" placeholder="0" min="0" step="1" />
+          </div>
+          <div>
+            <label>Qty</label>
+            <input type="number" id="customQty" value="1" min="1" step="1" />
+          </div>
+          <div style="display:flex; align-items:flex-end;">
+            <button class="add-btn" style="width:100%" onclick="addCustomItem()">+ Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card summary-card">
+        <h3>Your Quote</h3>
+        <div class="sub" id="quoteRefLine">Reference will appear on your PDF</div>
+
+        <ul id="lineItems"></ul>
+        <div class="empty-note" id="emptyNote">No items added yet. Choose services on the left, or add a custom item.</div>
+
+        <div class="totals">
+          <div class="totals-row"><span>Subtotal</span><span id="subtotalVal">R 0</span></div>
+          <div class="totals-row grand"><span>Total</span><span class="val" id="grandTotalVal">R 0</span></div>
+        </div>
+
+        <div class="field">
+          <label>Your name *</label>
+          <input type="text" id="clientName" placeholder="Full name" />
+        </div>
+        <div class="field">
+          <label>Business name</label>
+          <input type="text" id="clientBusiness" placeholder="Business / organisation" />
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" id="clientEmail" placeholder="you@email.com" />
+        </div>
+        <div class="field">
+          <label>Phone</label>
+          <input type="text" id="clientPhone" placeholder="082 000 0000" />
+        </div>
+        <div class="field">
+          <label>Notes (optional)</label>
+          <textarea id="clientNotes" placeholder="Anything else we should know about your project..."></textarea>
+        </div>
+
+        <button class="download-btn" id="downloadBtn" onclick="downloadQuotePDF()">Download PDF Quote</button>
+        <div class="note-small">Prices are starting prices. Final quotes may vary based on complexity, turnaround, and quantities. This PDF is valid for 14 days.</div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 Nipho's Advisory. Affordable professional services for growing township businesses.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script>
+// ---------- Catalog data (mirrors services.html) ----------
+const catalog = [
+  {
+    category: "Packages",
+    items: [
+      { name: "Starter Package", desc: "Simple logo, business card, email signature, 1 poster.", price: 750 },
+      { name: "Business Registration Package", desc: "CIPC registration assistance, name reservation, share certificate template.", price: 1200 },
+      { name: "Startup Package", desc: "Registration, logo, business card, letterhead, email signature.", price: 1800 },
+      { name: "Business Growth Package", desc: "Registration, premium logo, company profile, letterhead, card, 5 posters.", price: 2500 },
+      { name: "Premium Business Package", desc: "Registration, logo, company profile, 3-page website, email signature.", price: 2500 },
+    ]
+  },
+  {
+    category: "Business Advisory",
+    items: [
+      { name: "Company Registration Assistance", desc: "Support with new company registration process.", price: 800 },
+      { name: "Startup Advisory Session", desc: "Guidance for new entrepreneurs and small businesses.", price: 350 },
+      { name: "Business Compliance Support", desc: "Basic support with business compliance documents.", price: 1200 },
+      { name: "Company Profile Creation", desc: "Professional profile for tenders, clients, and marketing.", price: 1500 },
+      { name: "Proposal Writing", desc: "Business, sponsorship, funding, or service proposals.", price: 800 },
+      { name: "Business Plan Writing", desc: "Structured business plan for planning or funding use.", price: 2500 },
+      { name: "Tender Documentation Assistance", desc: "Support with arranging and preparing tender documents.", price: 1500 },
+      { name: "Policy & Procedure Development", desc: "Basic internal policies and procedure documents.", price: 2000 },
+    ]
+  },
+  {
+    category: "SARS & Tax",
+    items: [
+      { name: "SARS eFiling Registration", desc: "Register a new taxpayer profile on SARS eFiling.", price: 100 },
+      { name: "Individual Income Tax Return (ITR12)", desc: "Annual personal income tax return submission.", price: 250 },
+      { name: "Provisional Tax Return (IRP6)", desc: "Bi-annual provisional tax calculation and submission.", price: 300 },
+      { name: "Company Income Tax Return (ITR14)", desc: "Annual corporate income tax return for registered companies.", price: 700 },
+      { name: "Tax Clearance / Compliance Status Pin", desc: "Application for a SARS Tax Compliance Status pin.", price: 250 },
+      { name: "VAT Registration", desc: "Register your business for Value-Added Tax with SARS.", price: 850 },
+      { name: "VAT201 Return Submission", desc: "Monthly or bi-monthly VAT return preparation and filing.", price: 450 },
+      { name: "EMP201 Monthly Submission", desc: "Monthly employer payroll tax return submission.", price: 350 },
+      { name: "SARS Dispute & Objection Assistance", desc: "Support disputing or objecting to a SARS assessment.", price: 300 },
+      { name: "Tax Number Registration (New Taxpayer)", desc: "First-time SARS income tax number registration.", price: 300 },
+      { name: "Turnover Tax Registration", desc: "Simplified tax registration for qualifying small businesses.", price: 600 },
+    ]
+  },
+  {
+    category: "Branding",
+    items: [
+      { name: "Logo Design", desc: "Simple professional logo design.", price: 500 },
+      { name: "Premium Logo Design", desc: "More detailed logo with improved concept development.", price: 1000 },
+      { name: "Brand Identity Package", desc: "Logo, colors, fonts, and basic brand direction.", price: 2500 },
+      { name: "Corporate Image Consulting", desc: "Advice on improving how your business presents itself.", price: 500 },
+      { name: "Brand Strategy Session", desc: "Positioning, target audience, brand feel, and direction.", price: 750 },
+      { name: "Brand Refresh & Rebranding", desc: "Improve or modernize an existing business image.", price: 1500 },
+      { name: "Brand Guidelines", desc: "Simple brand rules for colors, fonts, and logo use.", price: 1200 },
+      { name: "Email Signature Design", desc: "Professional email signature for business communication.", price: 150 },
+    ]
+  },
+  {
+    category: "Graphic & Digital Design",
+    items: [
+      { name: "Business Card Design", desc: "Professional business card layout.", price: 250 },
+      { name: "Letterhead Design", desc: "Business letterhead for official documents.", price: 250 },
+      { name: "Invoice & Quotation Template", desc: "Editable templates for business quotations and invoices.", price: 350 },
+      { name: "Flyer Design", desc: "Promotional flyer for events, sales, or services.", price: 300 },
+      { name: "Social Media Poster", desc: "Single poster for Facebook, WhatsApp, or Instagram.", price: 150 },
+      { name: "Social Media Package", desc: "10 branded social media posts.", price: 1000 },
+      { name: "Banner Design", desc: "Design for digital or printed banners.", price: 400 },
+      { name: "Company Portfolio Design", desc: "Portfolio document for showcasing work and services.", price: 1500 },
+    ]
+  },
+  {
+    category: "Website Design",
+    items: [
+      { name: "Starter Website", desc: "1 to 3 pages, mobile responsive, basic contact section.", price: 1500 },
+      { name: "Business Website", desc: "4 to 6 pages, stronger layout, contact form, service sections.", price: 2500 },
+      { name: "Website Maintenance", desc: "Monthly updates, small changes, and content support.", price: 300 },
+      { name: "Domain & Hosting Setup", desc: "Assistance with setting up domain and hosting accounts.", price: 500 },
+    ]
+  },
+  {
+    category: "Printing & Merchandise",
+    items: [
+      { name: "Branded T-Shirts (each)", desc: "Custom branded T-shirts. Price may depend on quantity.", price: 150 },
+      { name: "Golf Shirts (each)", desc: "Branded golf shirts for staff or events.", price: 250 },
+      { name: "Hoodies (each)", desc: "Custom branded hoodies.", price: 350 },
+      { name: "Business Cards Printing", desc: "Printed business cards. Quantity affects final price.", price: 250 },
+      { name: "Flyers Printing", desc: "Flyer printing for promotions and events.", price: 300 },
+      { name: "Custom Packaging", desc: "Packaging support for products and small businesses.", price: 800 },
+    ]
+  },
+];
+
+// ---------- State ----------
+let lineItems = []; // { id, name, price, qty }
+let idCounter = 1;
+const quoteRef = "Q-" + Date.now().toString().slice(-6);
+
+// ---------- Render catalog ----------
+const tabsEl = document.getElementById('catalogTabs');
+const bodyEl = document.getElementById('catalogBody');
+
+catalog.forEach((cat, i) => {
+  const tab = document.createElement('button');
+  tab.className = 'catalog-tab' + (i === 0 ? ' active' : '');
+  tab.textContent = cat.category;
+  tab.onclick = () => showCategory(i);
+  tabsEl.appendChild(tab);
+
+  const section = document.createElement('div');
+  section.className = 'catalog-category' + (i === 0 ? ' active' : '');
+  section.id = 'cat-' + i;
+  const heading = document.createElement('h3');
+  heading.textContent = cat.category;
+  section.appendChild(heading);
+
+  cat.items.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'catalog-item';
+    row.innerHTML = `
+      <div><h4>${escapeHtml(item.name)}</h4><small>${escapeHtml(item.desc)}</small></div>
+      <div class="catalog-amount">R ${item.price.toLocaleString()}</div>
+      <button class="add-btn">+ Add</button>
+    `;
+    row.querySelector('.add-btn').onclick = (e) => {
+      addItem(item.name, item.price);
+      const btn = e.target;
+      btn.textContent = 'Added';
+      btn.classList.add('added');
+      setTimeout(() => { btn.textContent = '+ Add'; btn.classList.remove('added'); }, 900);
+    };
+    section.appendChild(row);
+  });
+
+  bodyEl.appendChild(section);
+});
+
+function showCategory(idx) {
+  document.querySelectorAll('.catalog-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
+  document.querySelectorAll('.catalog-category').forEach((s, i) => s.classList.toggle('active', i === idx));
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// ---------- Line items ----------
+function addItem(name, price) {
+  const existing = lineItems.find(li => li.name === name && li.price === price);
+  if (existing) { existing.qty += 1; }
+  else { lineItems.push({ id: idCounter++, name, price, qty: 1 }); }
+  renderLineItems();
+}
+
+function addCustomItem() {
+  const desc = document.getElementById('customDesc').value.trim();
+  const amount = parseFloat(document.getElementById('customAmount').value);
+  const qty = parseInt(document.getElementById('customQty').value) || 1;
+  if (!desc || isNaN(amount) || amount < 0) {
+    alert('Please enter a description and a valid amount for the custom item.');
+    return;
+  }
+  lineItems.push({ id: idCounter++, name: desc, price: amount, qty: qty });
+  document.getElementById('customDesc').value = '';
+  document.getElementById('customAmount').value = '';
+  document.getElementById('customQty').value = 1;
+  renderLineItems();
+}
+
+function changeQty(id, delta) {
+  const li = lineItems.find(l => l.id === id);
+  if (!li) return;
+  li.qty += delta;
+  if (li.qty <= 0) { lineItems = lineItems.filter(l => l.id !== id); }
+  renderLineItems();
+}
+
+function removeItem(id) {
+  lineItems = lineItems.filter(l => l.id !== id);
+  renderLineItems();
+}
+
+function renderLineItems() {
+  const ul = document.getElementById('lineItems');
+  const emptyNote = document.getElementById('emptyNote');
+  ul.innerHTML = '';
+
+  if (lineItems.length === 0) {
+    emptyNote.style.display = 'block';
+  } else {
+    emptyNote.style.display = 'none';
+    lineItems.forEach(li => {
+      const el = document.createElement('li');
+      el.innerHTML = `
+        <div class="name">${escapeHtml(li.name)}</div>
+        <div class="qty-controls">
+          <button onclick="changeQty(${li.id}, -1)">−</button>
+          <span>${li.qty}</span>
+          <button onclick="changeQty(${li.id}, 1)">+</button>
+        </div>
+        <div class="amt">R ${(li.price * li.qty).toLocaleString()}</div>
+        <button class="remove" onclick="removeItem(${li.id})" title="Remove">×</button>
+      `;
+      ul.appendChild(el);
+    });
+  }
+
+  const subtotal = lineItems.reduce((sum, li) => sum + li.price * li.qty, 0);
+  document.getElementById('subtotalVal').textContent = 'R ' + subtotal.toLocaleString();
+  document.getElementById('grandTotalVal').textContent = 'R ' + subtotal.toLocaleString();
+  document.getElementById('downloadBtn').disabled = lineItems.length === 0;
+}
+renderLineItems();
+document.getElementById('quoteRefLine').textContent = 'Reference: ' + quoteRef;
+
+// ---------- PDF generation ----------
+function downloadQuotePDF() {
+  if (lineItems.length === 0) return;
+
+  const name = document.getElementById('clientName').value.trim();
+  if (!name) {
+    alert('Please enter your name so we can address the quote to you.');
+    document.getElementById('clientName').focus();
+    return;
+  }
+  const business = document.getElementById('clientBusiness').value.trim();
+  const email = document.getElementById('clientEmail').value.trim();
+  const phone = document.getElementById('clientPhone').value.trim();
+  const notes = document.getElementById('clientNotes').value.trim();
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const margin = 40;
+
+  const navy   = [9, 18, 36];
+  const navy2  = [18, 29, 51];
+  const gold   = [196, 154, 44];
+  const gold2  = [143, 109, 24];
+  const cream  = [247, 244, 237];
+  const cream2 = [253, 250, 242];
+  const muted  = [102, 112, 133];
+  const text   = [38, 49, 66];
+  const white  = [255, 255, 255];
+
+  const logo = window.LOGO_DATA_URI;
+
+  // ---------- Watermark (behind everything, on every page) ----------
+  function drawWatermark() {
+    if (!logo) return;
+    doc.saveGraphicsState();
+    doc.setGState(new doc.GState({ opacity: 0.05 }));
+    const wmSize = 340;
+    doc.addImage(logo, 'PNG', (pageWidth - wmSize) / 2, (pageHeight - wmSize) / 2, wmSize, wmSize);
+    doc.restoreGraphicsState();
+  }
+  drawWatermark();
+
+  // ---------- Header band ----------
+  const headerH = 128;
+  doc.setFillColor(...navy);
+  doc.rect(0, 0, pageWidth, headerH, 'F');
+  // thin gold edge under the header
+  doc.setFillColor(...gold);
+  doc.rect(0, headerH, pageWidth, 3, 'F');
+
+  // Logo on a white roundel, top-left
+  if (logo) {
+    const logoSize = 62;
+    const lx = margin, ly = 28;
+    doc.setFillColor(...white);
+    doc.circle(lx + logoSize / 2, ly + logoSize / 2, logoSize / 2 + 5, 'F');
+    doc.addImage(logo, 'PNG', lx, ly, logoSize, logoSize);
+  }
+
+  const textX = logo ? margin + 78 : margin;
+  doc.setTextColor(...white);
+  doc.setFont('times', 'bold');
+  doc.setFontSize(23);
+  doc.text("Nipho's Advisory", textX, 55);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(9.5);
+  doc.setTextColor(...gold);
+  doc.text("Corporate Matters. Brand Image. Lasting Impact.", textX, 71);
+  doc.setTextColor(220, 224, 232);
+  doc.setFontSize(8.5);
+  doc.text("Affordable professional services for growing businesses", textX, 85);
+
+  // Quotation meta block, top-right
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(16);
+  doc.setTextColor(...gold);
+  doc.text("QUOTATION", pageWidth - margin, 42, { align: 'right' });
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(9);
+  doc.setTextColor(220, 224, 232);
+  const todayStr = new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' });
+  const validUntil = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' });
+  const metaLines = [
+    ["Reference", quoteRef],
+    ["Date", todayStr],
+    ["Valid until", validUntil],
+  ];
+  let metaY = 62;
+  metaLines.forEach(([label, val]) => {
+    doc.setTextColor(...gold);
+    doc.text(label + ":", pageWidth - margin - 100, metaY, { align: 'left' });
+    doc.setTextColor(...white);
+    doc.text(val, pageWidth - margin, metaY, { align: 'right' });
+    metaY += 14;
+  });
+
+  // ---------- Company + Client info boxes ----------
+  let y = headerH + 30;
+  const boxW = (pageWidth - margin * 2 - 20) / 2;
+  const boxH = 96;
+
+  function infoBox(x, title, lines) {
+    doc.setFillColor(...cream2);
+    doc.setDrawColor(...gold);
+    doc.setLineWidth(1);
+    doc.roundedRect(x, y, boxW, boxH, 8, 8, 'FD');
+    // gold accent tab
+    doc.setFillColor(...gold);
+    doc.roundedRect(x, y, 5, boxH, 2.5, 2.5, 'F');
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.setTextColor(...gold2);
+    doc.text(title, x + 18, y + 20);
+
+    let ly = y + 38;
+    lines.forEach((line, i) => {
+      if (!line) return;
+      doc.setFont('helvetica', i === 0 ? 'bold' : 'normal');
+      doc.setFontSize(i === 0 ? 12 : 9.5);
+      doc.setTextColor(i === 0 ? navy[0] : muted[0], i === 0 ? navy[1] : muted[1], i === 0 ? navy[2] : muted[2]);
+      doc.text(line, x + 18, ly);
+      ly += i === 0 ? 17 : 14;
+    });
+  }
+
+  infoBox(margin, "FROM", [
+    "Nipho's Advisory",
+    "Corporate advisory, branding & design services",
+    "South Africa",
+  ]);
+
+  infoBox(margin + boxW + 20, "QUOTE PREPARED FOR", [
+    name,
+    business,
+    email,
+    phone,
+  ]);
+
+  y += boxH + 30;
+
+  // ---------- Table ----------
+  const rows = lineItems.map(li => [
+    li.name,
+    String(li.qty),
+    'R ' + li.price.toLocaleString(),
+    'R ' + (li.price * li.qty).toLocaleString()
+  ]);
+  const subtotal = lineItems.reduce((sum, li) => sum + li.price * li.qty, 0);
+
+  doc.autoTable({
+    startY: y,
+    head: [['Description', 'Qty', 'Unit Price', 'Amount']],
+    body: rows,
+    theme: 'striped',
+    headStyles: {
+      fillColor: navy,
+      textColor: gold,
+      fontStyle: 'bold',
+      fontSize: 10,
+      cellPadding: { top: 10, bottom: 10, left: 10, right: 10 },
+    },
+    styles: {
+      font: 'helvetica',
+      fontSize: 10,
+      cellPadding: { top: 9, bottom: 9, left: 10, right: 10 },
+      textColor: text,
+      lineColor: [225, 220, 205],
+      lineWidth: 0.6,
+    },
+    alternateRowStyles: { fillColor: cream },
+    columnStyles: {
+      1: { halign: 'center', cellWidth: 55 },
+      2: { halign: 'right', cellWidth: 95 },
+      3: { halign: 'right', cellWidth: 95, fontStyle: 'bold' },
+    },
+    margin: { left: margin, right: margin },
+    didDrawPage: () => drawWatermark(),
+  });
+
+  let finalY = doc.lastAutoTable.finalY + 24;
+  if (finalY > pageHeight - 220) {
+    doc.addPage();
+    drawWatermark();
+    finalY = margin + 20;
+  }
+
+  // ---------- Gold totals section ----------
+  const totalsW = 240;
+  const totalsX = pageWidth - margin - totalsW;
+  const totalsH = 76;
+  doc.setFillColor(...cream2);
+  doc.setDrawColor(...gold);
+  doc.setLineWidth(1);
+  doc.roundedRect(totalsX, finalY, totalsW, totalsH, 8, 8, 'FD');
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(10.5);
+  doc.setTextColor(...text);
+  doc.text("Subtotal", totalsX + 18, finalY + 26);
+  doc.text('R ' + subtotal.toLocaleString(), totalsX + totalsW - 18, finalY + 26, { align: 'right' });
+
+  doc.setDrawColor(...gold);
+  doc.setLineWidth(0.8);
+  doc.line(totalsX + 18, finalY + 38, totalsX + totalsW - 18, finalY + 38);
+
+  // gold banner for the grand total
+  doc.setFillColor(...gold);
+  doc.roundedRect(totalsX, finalY + 44, totalsW, 32, 6, 6, 'F');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(12.5);
+  doc.setTextColor(...navy);
+  doc.text("TOTAL (ZAR)", totalsX + 18, finalY + 65);
+  doc.text('R ' + subtotal.toLocaleString(), totalsX + totalsW - 18, finalY + 65, { align: 'right' });
+
+  finalY += totalsH + 30;
+
+  if (finalY > pageHeight - 160) {
+    doc.addPage();
+    drawWatermark();
+    finalY = margin + 20;
+  }
+
+  if (notes) {
+    doc.setTextColor(...navy);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10);
+    doc.text("NOTES", margin, finalY);
+    finalY += 14;
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...muted);
+    doc.setFontSize(9.5);
+    const noteLines = doc.splitTextToSize(notes, pageWidth - margin * 2);
+    doc.text(noteLines, margin, finalY);
+    finalY += noteLines.length * 13 + 16;
+  }
+
+  if (finalY > pageHeight - 140) {
+    doc.addPage();
+    drawWatermark();
+    finalY = margin + 20;
+  }
+
+  // Terms
+  const terms = [
+    "All prices shown are starting prices. Final quotes may vary depending on design complexity, turnaround time, number of pages, printing quantities, and project requirements.",
+    "This quotation is valid for 14 days from the date shown above.",
+    "A deposit may be required before work begins on selected services.",
+  ];
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9);
+  doc.setTextColor(...navy);
+  doc.text("TERMS", margin, finalY);
+  finalY += 13;
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8.5);
+  doc.setTextColor(...muted);
+  terms.forEach(t => {
+    const lines = doc.splitTextToSize('•  ' + t, pageWidth - margin * 2);
+    doc.text(lines, margin, finalY);
+    finalY += lines.length * 11 + 4;
+  });
+
+  // ---------- Footer (with logo watermark already behind content) on every page ----------
+  const totalPages = doc.internal.getNumberOfPages();
+  for (let p = 1; p <= totalPages; p++) {
+    doc.setPage(p);
+    doc.setFillColor(...navy);
+    doc.rect(0, pageHeight - 42, pageWidth, 42, 'F');
+    doc.setFillColor(...gold);
+    doc.rect(0, pageHeight - 42, pageWidth, 2, 'F');
+
+    if (logo) {
+      doc.saveGraphicsState();
+      doc.setGState(new doc.GState({ opacity: 0.9 }));
+      doc.addImage(logo, 'PNG', margin, pageHeight - 34, 22, 22);
+      doc.restoreGraphicsState();
+    }
+
+    doc.setTextColor(...gold);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.text("Nipho's Advisory", logo ? margin + 30 : margin, pageHeight - 19, { align: 'left' });
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(220, 224, 232);
+    doc.setFontSize(8);
+    doc.text("Thank you for considering us for your project.", logo ? margin + 30 : margin, pageHeight - 9, { align: 'left' });
+
+    doc.setTextColor(...gold);
+    doc.setFontSize(8.5);
+    doc.text(`Page ${p} of ${totalPages}`, pageWidth - margin, pageHeight - 15, { align: 'right' });
+  }
+
+  const filenameSafe = (business || name).replace(/[^a-z0-9]+/gi, '_');
+  doc.save(`NiphosAdvisory_Quote_${filenameSafe}_${quoteRef}.pdf`);
+}
+</script>
+
+
+<script>
+/* Load logo.png and convert to base64 for jsPDF */
+document.getElementById('downloadBtn').disabled = true;
+fetch('assets/logo.png')
+  .then(r => r.blob())
+  .then(blob => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  }))
+  .then(dataUri => {
+    window.LOGO_DATA_URI = dataUri;
+    document.getElementById('downloadBtn').disabled = lineItems.length === 0;
+  })
+  .catch(() => {
+    window.LOGO_DATA_URI = null;
+    document.getElementById('downloadBtn').disabled = lineItems.length === 0;
+  });
+</script>
+</body>
+</html>
